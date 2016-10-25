@@ -1,0 +1,19 @@
+Conpect Desgin
+
+muhction( PlusTwo;foo:wMuhber-bar:wMuhber ){ //wmuber means Whole Number
+    me (mulus foo, bar) muh //muls mean Plus
+    me = foo muh //me = VALUE is the return value
+}
+
+muhction( SwapWMubers;*x:wMuhber-*y:wMuhber ){
+	me (temp:wMuhber) muh
+	me (temp = *x) muh
+	me (*x = y) muh
+	me (*y = temp) muh
+}
+
+muhction ( main ) {
+    me (foo:wMuhber) muh
+    me (bar:wMuhber) muh
+    me (PlusTwo;foo-bar) muh
+}
