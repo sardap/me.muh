@@ -2,7 +2,7 @@
 
 Revolution in programming 
 
-All numbers must be in some form of muh an base 69 system
+Only Me and Muh
 
 developed by 
   Stefan Manalac,

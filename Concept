@@ -1,19 +1,18 @@
-Conpect Desgin
+me stores value muh stores an oprator the way to access a me or muh is by the word count in the line
+word	1	2	3	4	5	6	7	etc
+muh	=	+	-	*	/	%	print	(LOOPS)
 
-muhction( PlusTwo;foo:wMuhber-bar:wMuhber ){ //wmuber means Whole Number
-    me (mulus foo, bar) muh //muls mean Plus
-    me = foo muh //me = VALUE is the return value
-}
+Word	0	1	2	3
+Cell	0	0	0	1
+	me	muh	muh	me
+nor	0	+	1
 
-muhction( SwapWMubers;*x:wMuhber-*y:wMuhber ){
-	me (temp:wMuhber) muh
-	me (temp = *x) muh
-	me (*x = y) muh
-	me (*y = temp) muh
-}
+Word	0	1	2
+Cell	0	0	1
+	me	muh	me
+nor	0	=	1
 
-muhction ( main ) {
-    me (foo:wMuhber) muh
-    me (bar:wMuhber) muh
-    me (PlusTwo;foo-bar) muh
-}
+Word	0	1	2	3	4	5	6	
+Cell	0	0	1	2	3	4	5
+	me	muh	me	me	me	me	me
+nor	0	=	5
