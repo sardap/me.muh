@@ -2,7 +2,9 @@
 
 Revolution in programming 
 
-Only Me and Muh
+Only Me, Muh and numbers
+
+use c++11
 
 developed by 
   Stefan Manalac,
