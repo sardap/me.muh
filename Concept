@@ -1,6 +1,6 @@
 me stores value muh stores an oprator the way to access a me or muh is by the word count in the line
-word	0	1	2	3	4	5	6	etc
-muh	=	+	-	*	/	%	print	(LOOPS)
+word	0	1	2	3	4	5	6			7					etc
+muh		=	+	-	*	/	%	print	do while 	(LOOPS)
 
 Word	0	1	2	3
 Cell	0	0	0	1
@@ -16,3 +16,5 @@ Word	0	1	2	3	4	5	6
 Cell	0	0	1	2	3	4	5
 	me	muh	me	me	me	me	me
 nor	0	=	5
+
+the way do while works idk

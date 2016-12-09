@@ -3,7 +3,6 @@
 #include <string>
 #include <regex>
 #include <vector>
-#include <map>
 #define NUM_OF_OPS 6
 
 using namespace std;
@@ -156,7 +155,8 @@ class me_line {
 						std::cout << "ERROR@ln " << lineNum << ": ENDING MUH WITHOUT ME " << random_insult(rand()%5+2) <<'\n';
 						return 0;
 					} else {
-						if(words.size() != 2){
+						//Fix this shit a better way fucktard
+						if((words.size() != 2) && (!words[i].action.find("printf"))){
 							words.erase(words.begin()+i);
 						}
 					}
