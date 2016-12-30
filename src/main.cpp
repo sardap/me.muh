@@ -85,7 +85,7 @@ class me_line {
 			lineNum = assLineNum;
 			output = "";
 			//onlt matchs muh me and numbers
-			std::regex phrase ("(muh)|(me)|([0-9][^ ]+)");
+			std::regex phrase ("(muh)|(me)|(\\d+)");
 			int wordNum = 0;
 			int cellNum = 0;
 			std::regex_search(line.c_str(), phrase);
