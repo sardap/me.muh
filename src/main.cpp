@@ -34,13 +34,13 @@ std::string random_insult(int strength){
 	}
 	return insult;
 }
-//each word is a me_word
-class me_word {
+//each word is a Me_word
+class Me_word {
 	public:
 		//stores the stirng
 		std::string word;
 		std::string action;
-		me_word(std::string str, int wordNumAss, int cellNumAss){
+		Me_word(std::string str, int wordNumAss, int cellNumAss){
 			word = str;
 			wordNum = wordNumAss;
 			cellNum = cellNumAss;
@@ -94,7 +94,7 @@ class me_line {
 			i != std::sregex_iterator(); ++i){
 				std::smatch match = *i;
 				//creates a word with the appotie wordNum and cellNum
-				me_word tempWord(match.str(), wordNum, cellNum);
+				Me_word tempWord(match.str(), wordNum, cellNum);
 				words.push_back(tempWord);
 				//Increments CellNum and or wordNum apporitely
 				if(match.str() == "me"){
@@ -123,7 +123,7 @@ class me_line {
 	private:
 		std::string line;
 		int lineNum;
-		std::vector<me_word> words;
+		std::vector<Me_word> words;
 		int clean_string(){
 			unsigned int i;
 			if(words.size() >= 2){
