@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
-#include "me_word.cpp"
-#include "misc.cpp"
+#include "me_word.h"
+#include "me_line.h"
+#include "misc.h"
 
 int main(int argc, char const *argv[]) {
 	std::string str;

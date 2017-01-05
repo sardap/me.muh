@@ -2,6 +2,7 @@
 #define ME_WORD_H
 	#include <string>
 	#include <iostream>
+	#include "me_word.cpp"
 	class Me_word {
 		public:
 			std::string word;

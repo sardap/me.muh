@@ -1,5 +1,3 @@
-#include <regex>
-#include <vector>
 #include "me_line.h"
 #include "me_word.cpp"
 #include "misc.cpp"
@@ -34,7 +32,7 @@ Me_line::Me_line(std::string str, int assLineNum){
 	}
 	// std::cout << "Cleaned String" << '\n';
 	//removes unsessarcy words then gerates the C Code
-	sucess = clean_string() && get_output();
+	sucess = clean_string() && check_line() && get_output();
 };
 
 std::string Me_line::info(){
@@ -53,10 +51,27 @@ std::ostream & operator<<(std::ostream &os, Me_line &object){
 }
 
 int Me_line::clean_string(){
+	size_t i;
+	for(i = 0; i < words.size()-1; /*std::cout << i << "<" << words.size()-2 << '\n'*/){
+		// std::cout << "words[" << i << "]" << words[i].word << "== words[" << i << "]" << words[i+1].word  <<  '\n';
+		if(words[i].word == words[i+1].word){
+			// std::cout << "Delteing " << i << "\n";
+			words.erase(words.begin()+i);
+			i=0;
+		} else {
+			i++;
+		}
+	}
+	return 1;
+}
+
+int Me_line::check_line(){
 	// these are the rules
-	//1. The first word must be me
-	//2.
-	unsigned int i;
+	//1. There must be at least 2 words
+	//2. The first word must be me
+	//3. The last Cannot be me
+	//4. if the last word is muh it must be closing a me
+	size_t i;
 	if(words.size() >= 2){
 		// std::cout << "size: "<< words.size() << '\n';
 		//checks that the first word is me
@@ -64,19 +79,9 @@ int Me_line::clean_string(){
 			std::cout << "ERROR@ln " << lineNum << ": MISSING STARTING ME " << random_insult(rand()%5+2) <<'\n';
 			return 0;
 		}
-		//removes all but the last word
-		for(i = 0; i < words.size()-1; /*std::cout << i << "<" << words.size()-2 << '\n'*/){
-			// std::cout << "words[" << i << "]" << words[i].word << "== words[" << i << "]" << words[i+1].word  <<  '\n';
-			if(words[i].word == words[i+1].word){
-				// std::cout << "Delteing " << i << "\n";
-				words.erase(words.begin()+i);
-				i=0;
-			} else {
-				i++;
-			}
-		}
 		// ERROR CHECKING NEEDS WORK!!!
 		//checks that the last word is not me
+		i = words.size()-1;
 		if(words[i].word == "me"){
 			std::cout << "ERROR@ln " << lineNum << ": MISSING ENDING MUH " << random_insult(rand()%5+2) <<'\n';
 			return 0;
@@ -97,5 +102,33 @@ int Me_line::clean_string(){
 		std::cout << "ERROR@ln" << lineNum << ": UNDER TWO WORDS " << random_insult(3) << '\n';
 		return 0;
 	}
+	return 1;
+}
+
+int Me_line::get_output(){
+	unsigned int i;
+	std::regex regAry ("(ary\\[[0-9]\\])");
+	std::regex regOut ("(printf.*)");
+	// std::cout << lineNum << '\n';
+	std::stringstream result;
+	result << "\t" << "//Line Num:" << lineNum << " Code:" << line << "\n" << "\t";
+	for(i=0; i<words.size(); i++){
+		if(std::regex_match(words[i].action, regAry)){
+			if(std::regex_search(words[i+1].action, regOut)){
+				result << words[++i].action << ";" << "\n\t";
+			} else {
+				result << words[i].action;
+				if(words[i+1].action != "="){
+					result << words[++i].action << "=";
+				} else {
+					result << words[++i].action;
+				}
+				result << words[++i].action;
+				result << ";" << '\n' << "\t";
+			}
+		}
+	}
+	result << '\n';
+	output = result.str();
 	return 1;
 }

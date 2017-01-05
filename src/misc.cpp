@@ -16,7 +16,7 @@ int is_number(const char *str){
 
 std::string random_insult(int strength){
 	std::string insult = "you";
-	std::string temp = S"";
+	std::string temp = "";
 	int x;
 	int i;
 	//makes insult length is strength
