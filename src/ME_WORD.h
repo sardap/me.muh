@@ -1,18 +1,18 @@
 #ifndef ME_WORD_H
 #define ME_WORD_H
-	#include <string>
 	#include <iostream>
-	#include "me_word.cpp"
+	#include <string>
 	class Me_word {
 		public:
-			std::string word;
+			enum E_Type {ME, MUH, NUMBER};
+			E_Type get_type();
 			std::string action;
 			Me_word(std::string str, int wordNumAss, int cellNumAss);
-			friend std::ostream & operator<<(std::ostream &os, const Me_word &object);
+			friend std::ostream & operator<<(std::ostream &os, Me_word &object);
 			std::string info();
 		private:
-			enum E_Type {EQL, PUS, MUN, MUL, DIV, MOD, PRT, ACS, NUM, INV};
 			E_Type type;
+			std::string E_Type_to_string(E_Type toFind);
 			int wordNum;
 			int cellNum;
 			std::string get_action(std::string word);

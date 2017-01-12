@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#include "me_word.h"
-#include "me_line.h"
+#include "Me_word.h"
+#include "Me_line.h"
 #include "misc.h"
 
 int main(int argc, char const *argv[]) {
@@ -12,7 +12,7 @@ int main(int argc, char const *argv[]) {
 	} else {
 		std::cout << "Not Number" << '\n';
 	}
-	Me_word test("me", 6, 20);
-	std::cout << test << '\n';
+	Me_line ln_test("me muh me muh muh muh muh", 3);
+	std::cout << ln_test << '\n';
 	return 0;
 }

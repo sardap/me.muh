@@ -1,12 +1,26 @@
 #include <iostream>
 #include <string>
 #include <regex>
-#include "me_word.h"
+#include "Me_word.h"
 #include "misc.h"
+
+Me_word::E_Type Me_word::get_type(){
+	return type;
+}
+
+std::string Me_word::E_Type_to_string(Me_word::E_Type toFind){
+	std::string result;
+	switch (toFind) {
+		case ME: result = "me"; break;
+		case MUH: result = "muh"; break;
+		case NUMBER: result = "Number"; break;
+	}
+	return result;
+}
 
 std::string Me_word::info(){
 	std::stringstream result;
-	result << "NUM:" << wordNum << " CELLNUM:" << cellNum << " ACTION:" << action;
+	result << "TYPE:" << E_Type_to_string(type) << " NUMBER:" << wordNum << " CELLNUM:" << cellNum << " ACTION:" << action;
 	return result.str();
 }
 
@@ -19,35 +33,42 @@ std::ostream & operator<<(std::ostream &os, Me_word &object){
 std::string Me_word::get_action(std::string word){
 	std::stringstream result;
 	switch (type) {
-		case EQL: result << "="; break;	case PUS: result << "+"; break;
-		case MUN: result << "-"; break;	case MUL: result << "*"; break;
-		case DIV: result << "/"; break;	case MOD: result << "%"; break;
-		case PRT: result << "printf(\"%c\", ary[" << cellNum - 1 << "])"; break;
-		case NUM: result << word; break;	case INV: result << "INVAILD"; break;
-		case ACS: result << "ary[" << cellNum << "]";
+		case ME: result << "ary[" << cellNum << "]"; break;
+		case MUH :
+			switch (wordNum) {
+				case 0: result << "="; break;
+				case 1: result << "+"; break;
+				case 2: result << "-"; break;
+				case 3: result << "*"; break;
+				case 4: result << "/"; break;
+				case 5: result << "%"; break;
+				case 6: result << "printf(\"%c\", ary[" << cellNum - 1 << "])"; break;
+			}
+			break ;
+		case NUMBER :  result << word; break;
 	}
 	return result.str();
 }
 
 Me_word::E_Type Me_word::get_type(std::string word){
+	E_Type result;
 	if (is_number(word.c_str())){
-		return NUM;
+		result = NUMBER;
 	} else if (word == "me"){
-		return ACS;
+		result = ME;
 	} else {
-		switch (wordNum) {
-			case 0: return EQL; break;	case 1: return PUS; break;
-			case 2: return MUN; break;	case 3: return MUL; break;
-			case 4: return DIV; break;	case 5: return MOD; break;
-			case 6: return PRT; break;	default: return INV; break;
-		}
+		((wordNum >= 0) && (wordNum <= 6))? result = MUH: throw "invaild Entry for word";
 	}
+	return result;
 }
 
-Me_word::Me_word(std::string assWord, int wordNumAss, int cellNumAss){
-	word = assWord;
+Me_word::Me_word(std::string word, int wordNumAss, int cellNumAss){
 	wordNum = wordNumAss;
 	cellNum = cellNumAss;
-	type = get_type(word);
+	try {
+		type = get_type(word);
+	} catch (const char *msg){
+		std::cout << msg << '\n';
+	}
 	action = get_action(word);
 }
