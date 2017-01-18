@@ -78,11 +78,11 @@ int muhterpret(const char *fileName){
 	Me_code code;
 	try {
 		read_input_file(fileName, code);
+		std::cout << code.info();
+		genrate_output_file(fileName, code);
 	} catch (const char *errorUnableToOpenFile) {
 		std::cout << errorUnableToOpenFile << '\n';
 	}
-	std::cout << code.info();
-	genrate_output_file(fileName, code);
 	return 0;
 }
 

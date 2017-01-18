@@ -43,6 +43,7 @@ std::string Me_word::get_action(std::string word){
 				case 4: result << "/"; break;
 				case 5: result << "%"; break;
 				case 6: result << "printf(\"%c\", ary[" << cellNum - 1 << "])"; break;
+				case 7: result << "scanf(\" %c\", &ary[" << cellNum - 1 << "])"; break;
 			}
 			break ;
 		case NUMBER :  result << word; break;
@@ -57,7 +58,7 @@ Me_word::E_Type Me_word::get_type(std::string word){
 	} else if (word == "me"){
 		result = ME;
 	} else {
-		((wordNum >= 0) && (wordNum <= 6))? result = MUH: throw "invaild Entry for word";
+		((wordNum >= 0) && (wordNum <= 7))? result = MUH: throw "invaild Entry for word";
 	}
 	return result;
 }

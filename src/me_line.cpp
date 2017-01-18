@@ -71,7 +71,7 @@ int Me_line::check_line(){
 int Me_line::get_output(){
 	unsigned int i;
 	std::regex regAry ("(ary\\[[0-9]\\])");
-	std::regex regOut ("(printf.*)");
+	std::regex regOut (".*\\(*\\)");
 	// std::cout << lineNum << '\n';
 	std::stringstream result;
 	result << "\t" << "//Line Num:" << lineNum << " Code:" << line << "\n" << "\t";
