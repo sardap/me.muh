@@ -19,19 +19,25 @@ std::string random_insult(int strength){
 	int x;
 	int i;
 	//makes insult length is strength
-	for(i = 0; i < strength; i++){
+	for(i = 0; i < strength; i++) {
 		// dowhile loop used to ensure there are no doubles in the insult
-		do{
+		do {
 			x = rand() % 12;
 			switch (x) {
-				case 0:  temp = " Fucking";   break;	case 5:  temp = " Trump"; 		break;
-				case 1:  temp = " enchilada"; break;	case 6:  temp = " Idiot"; 		break;
-				case 2:  temp = " Jerry"; 	break;	case 7:  temp = " Piss head"; 	break;
-				case 3:  temp = " Fattie"; 	break;	case 8:  temp = " Cunt"; 		break;
-				case 4:  temp = " Stupid"; 	break;	case 9:  temp = " Shithead"; 		break;
-				case 10: temp = " Drugoo"; 	break;	case 11: temp = " Captalist Pig"; 	break;
+				case 0:  temp = " Fucking";   			break;
+				case 1:  temp = " enchilada"; 			break;
+				case 2:  temp = " Jerry"; 					break;
+				case 3:  temp = " Fattie"; 					break;
+				case 4:  temp = " Stupid"; 					break;
+				case 5:  temp = " Trump"; 					break;
+				case 6:  temp = " Idiot"; 					break;
+				case 7:  temp = " Piss head"; 			break;
+				case 8:  temp = " Cunt"; 						break;
+				case 9:  temp = " Shithead"; 				break;
+				case 10: temp = " Drugoo"; 					break;
+				case 11: temp = " Captalist Pig"; 	break;
 			}
-		}while(insult.find(temp) != std::string::npos);
+		} while(insult.find(temp) != std::string::npos);
 		insult += temp;
 	}
 	return insult;
