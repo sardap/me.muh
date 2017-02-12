@@ -75,7 +75,7 @@ int Me_line::get_output(){
 	// std::cout << lineNum << '\n';
 	std::stringstream result;
 	result << "\t" << "//Line Num:" << lineNum << " Code:" << line << "\n" << "\t";
-	for (i=0; i<words.size(); i++) {
+	for (i = 0; i<words.size(); i++) {
 		if (std::regex_match(words[i].action, regAry)) {
 			if (std::regex_search(words[i+1].action, regOut)) {
 				result << words[++i].action << ";" << "\n\t";
